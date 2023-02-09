@@ -45,7 +45,8 @@ public class SecurityConfig  {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/login").permitAll();
-        http.authorizeRequests().antMatchers("/anonce").permitAll();
+        http.authorizeRequests().antMatchers("/anonce").hasAnyRole("R_VISITEUR","R_RESIDENCE","R_HOTEL","R_APPARTEMENT","R_VILLA","R_PISCINE","R_LOISIR","R_RESTO");
+       
         http.authorizeRequests().antMatchers("/new-account").permitAll();
         http.authorizeRequests().antMatchers("/creer-anonce").permitAll();
         http.authorizeRequests().antMatchers("/all-user-config").permitAll();
