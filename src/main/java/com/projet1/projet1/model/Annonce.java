@@ -1,14 +1,16 @@
 package com.projet1.projet1.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,11 +45,26 @@ public class Annonce {
 	@ManyToOne
 	private Categorie categorie;
 	
+	
+	
+	//temps annonce mapping
+	@ManyToOne
+	private Temps_annonce temps;
+	
+	
+	
+	//image mapping
+	@ManyToOne
+	private ImageData image;
+	
+	
 	//region mapping
 	@ManyToOne
 	private Region region;
 	
-	//commune mappin
+	
+	
+	//commune mapping
 	@ManyToOne
 	private Commune commune;
 	
@@ -66,4 +83,12 @@ public class Annonce {
 		//personne 
 		@ManyToOne
 		private User user;
+		/***********************************************anonce et reservation*****************************************/
+		
+		@OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL)
+	    private List<Reservation> reservations = new ArrayList<>();
+		/***********************************************fin*****************************************/
+		/**********************************************************commentaire*********************************************/
+		 @OneToMany(mappedBy = "annonce")
+		  private List<Commentaire> commentaires;
 }

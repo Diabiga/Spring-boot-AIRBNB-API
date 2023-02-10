@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{dd-MM-yyyy HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<!-- <File name="FileAppender" fileName="${sys:user.home}/safe/log/safeconnect.log" 
+			immediateFlush="false" append="true"> <PatternLayout pattern="%d{dd-MM-yyyy 
+			HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/> </File> -->
+
+		<RollingFile name="RollingFile"
+			fileName="${sys:user.home}/safe/SDK_log/projet1.log"
+			filePattern="${sys:user.home}/safe/SDK_log/projet1.%i.log.gz"
+			ignoreExceptions="false">
+			<PatternLayout>
+				<Pattern>%d{dd-MM-yyyy HH:mm:ss} [%t] %-5level %logger{36} - %msg%n
+				</Pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="5" />
+		</RollingFile>
+	</Appenders>
+	
+	<category name="org.hibernate">
+			<priority value="INFO" />
+	</category>
+
+
+<Loggers>
+
+			<Root level="INFO">
+				<AppenderRef ref="ConsoleAppender" />
+				<AppenderRef ref="RollingFile" />
+			</Root>
+	  </Loggers>
+
+</Configuration>
+

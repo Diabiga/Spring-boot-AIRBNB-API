@@ -2,6 +2,8 @@ package com.projet1.projet1.service;
 
 import javax.transaction.Transactional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,7 @@ import com.projet1.projet1.service.dao.UserServiceInterface;
 @Transactional
 @Service
 public class UserService implements UserServiceInterface {
-	
+	private static final Logger myLogger =  LogManager.getLogger( UserService.class) ;
 	@Autowired
 	UserRepository userRep;
 	

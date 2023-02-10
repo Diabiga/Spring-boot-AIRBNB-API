@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 
 public class FileStorageServiceImpl implements FilesStorageService {
-	
+	private static final Logger myLogger =  LogManager.getLogger( FileStorageServiceImpl.class) ;
 	  private final Path root = Paths.get("uploads");
 
 	  @Override

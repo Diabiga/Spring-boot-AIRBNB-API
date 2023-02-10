@@ -10,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Region {
 
+	
 
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
@@ -29,7 +33,9 @@ public class Region {
 	String NomRegion;
 	String Densite;
 	
-	@OneToMany (mappedBy = "region")
-	@JsonIgnore
-	private List<Annonce> annonce;
+	
+	  @OneToMany (mappedBy = "region")
+	  
+	  @JsonIgnore private List<Annonce> annonce;
+	 
 }

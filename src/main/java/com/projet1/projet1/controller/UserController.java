@@ -10,6 +10,9 @@ import com.projet1.projet1.model.User;
 import com.projet1.projet1.repo.UserRepository;
 @RestController
 @CrossOrigin(origins = "*")
+
+
+@RequestMapping("/user")
 public class UserController {
 
 	

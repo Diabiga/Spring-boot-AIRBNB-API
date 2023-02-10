@@ -27,28 +27,30 @@ public class Projet1Application {
 	UserService userService;
 	
 	@PostConstruct
-	/*
-	void init_users() {
-	//ajouter les rôles
-	//userService.addRole(new Role(null,"R_VISITEUR"));
-	//userService.addRole(new Role(null,"R_RESIDENCE"));
-	//userService.addRole(new Role(null,"R_HOTEL"));
-	//userService.addRole(new Role(null,"R_APPARTEMENT"));
-	//userService.addRole(new Role(null,"R_VILLA"));
-	//userService.addRole(new Role(null,"R_PISCINE"));
-	//userService.addRole(new Role(null,"R_LOISIR"));
-	//userService.addRole(new Role(null,"R_RESTO"));
-	//ajouter les users
-	//userService.saveUser(new User(null,"admin","123",true,null));
-	//userService.saveUser(new User(null,"nadhem","123",true,null));
-	//userService.saveUser(new User(null,"yassine","123",true,null));
 	
-	//userService.addRoleToUser("admin", "ADMIN");
-	//userService.addRoleToUser("admin", "USER");
-	//userService.addRoleToUser("nadhem", "USER");
-	//userService.addRoleToUser("yassine", "USER");
-	}
-	*/
+	
+	/*
+	 * void init_users() {
+	 * 
+	 * //ajouter les rôles userService.addRole(new Role(null,"R_VISITEUR"));
+	 * userService.addRole(new Role(null,"R_RESIDENCE")); userService.addRole(new
+	 * Role(null,"R_HOTEL")); userService.addRole(new Role(null,"R_APPARTEMENT"));
+	 * userService.addRole(new Role(null,"R_VILLA")); userService.addRole(new
+	 * Role(null,"R_PISCINE")); userService.addRole(new Role(null,"R_LOISIR"));
+	 * userService.addRole(new Role(null,"R_RESTO")); // ajouter les users
+	 * 
+	 * userService.saveUser(new User(null,"admin","123",true,null, null, null,
+	 * null)); userService.saveUser(new User(null,"nadhem","123",true,null, null,
+	 * null, null)); userService.saveUser(new User(null,"yassine","123",true,null,
+	 * null, null, null));
+	 * 
+	 * userService.addRoleToUser("admin", "R_VISITEUR");
+	 * userService.addRoleToUser("admin", "R_RESIDENCE");
+	 * userService.addRoleToUser("nadhem", "R_HOTEL");
+	 * userService.addRoleToUser("yassine", "R_APPARTEMENT"); }
+	 */
+	 
+	
 	@Bean
 	BCryptPasswordEncoder getBCE() {
 	return new BCryptPasswordEncoder();

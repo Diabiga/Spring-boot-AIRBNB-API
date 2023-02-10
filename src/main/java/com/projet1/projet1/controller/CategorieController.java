@@ -17,7 +17,7 @@ import com.projet1.projet1.service.CategorieService;
 
 
 @RestController
-@RequestMapping("/api/cat")
+@RequestMapping("/categorie")
 @CrossOrigin("*")
 public class CategorieController {
 	@Autowired
