@@ -24,8 +24,9 @@ public class Commune {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long commune_id;
-	String Nomcommune;
-	String Repere;//répère
+	String nomCommune;
+	
+	String repere;
 	
 	@OneToMany (mappedBy = "commune")
 	@JsonIgnore

@@ -23,7 +23,7 @@ public class Ordre {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long ordre_id;
-	String Description;
+	String description;
 	int note;
 	@OneToMany (mappedBy = "ordre")
 	@JsonIgnore

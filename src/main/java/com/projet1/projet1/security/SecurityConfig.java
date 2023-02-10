@@ -45,7 +45,7 @@ public class SecurityConfig  {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/login").permitAll();
-        http.authorizeRequests().antMatchers("/anonce").hasAnyRole("R_VISITEUR","R_RESIDENCE","R_HOTEL","R_APPARTEMENT","R_VILLA","R_PISCINE","R_LOISIR","R_RESTO");
+        //http.authorizeRequests().antMatchers("/anonce").hasAnyRole("R_VISITEUR","R_RESIDENCE","R_HOTEL","R_APPARTEMENT","R_VILLA","R_PISCINE","R_LOISIR","R_RESTO");
        
         http.authorizeRequests().antMatchers("/new-account").permitAll();
         http.authorizeRequests().antMatchers("/creer-anonce").permitAll();
@@ -54,9 +54,12 @@ public class SecurityConfig  {
         http.authorizeRequests().antMatchers("/sup-annonce").permitAll();
         http.authorizeRequests().antMatchers("/update-user").permitAll();
         http.authorizeRequests().antMatchers("/update-anonce").permitAll();
-        //http.authorizeRequests().antMatchers("/all").permitAll();
-        http.authorizeRequests().antMatchers("/all").hasAuthority("ADMIN");
-        http.authorizeRequests().antMatchers("/api/cat").hasAuthority("ADMIN");//CRUD
+        http.authorizeRequests().antMatchers("/api").permitAll();
+        http.authorizeRequests().antMatchers("/commune/save").permitAll();
+        http.authorizeRequests().antMatchers("/commune/listall").permitAll();
+        
+        //http.authorizeRequests().antMatchers("/all").hasAuthority("ADMIN");
+        //http.authorizeRequests().antMatchers("/api/cat").hasAuthority("ADMIN");//CRUD
         
         http.authorizeRequests().anyRequest().authenticated();
 

@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Disponibilite {
 	
 	Date horaire;
-	String Description;
+	String description;
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long disponibilite_id;

@@ -30,8 +30,8 @@ public class Region {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long region_id;
-	String NomRegion;
-	String Densite;
+	String nomRegion;
+	String densite;
 	
 	
 	  @OneToMany (mappedBy = "region")

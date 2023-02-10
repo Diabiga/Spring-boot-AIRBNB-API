@@ -24,9 +24,9 @@ public class Reservation {
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long reservation_id;
 	
-	String Motif;
-	Date Datereservation;
-	int Nbpersonne; 
+	String motif;
+	Date datereservation;
+	int nbpersonne; 
 	
 	@ManyToOne
     @JoinColumn(name = "user_id")

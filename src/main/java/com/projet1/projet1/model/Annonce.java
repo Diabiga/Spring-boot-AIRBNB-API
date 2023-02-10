@@ -25,20 +25,20 @@ public class Annonce {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long annonce_id;
-	String Titre;
-	String Description1;
-	String Description2;
-	String Description3;
-	String Description4;
-	String Dimension;
+	String titre;
+	String description1;
+	String description2;
+	String description3;
+	String description4;
+	String dimension;
 	
-	String Nbpiece;
+	String nbPiece;
 	String contact;
 	String prix;
 	String whatapp;
-	String Note; 
-	String Etoile;
-	Date OpenDate;
+	String note; 
+	String etoile;
+	Date openDate;
 	
 	
 	//catégorie

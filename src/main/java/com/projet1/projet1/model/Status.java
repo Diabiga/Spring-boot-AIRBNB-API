@@ -23,8 +23,8 @@ public class Status {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	 private Long status_id;
-	 Boolean Disponibilite;
-	 String Description;
+	 Boolean disponibilite;
+	 String description;
 	 
 	 @OneToMany (mappedBy = "status")
 		@JsonIgnore
