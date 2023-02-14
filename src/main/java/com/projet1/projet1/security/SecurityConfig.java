@@ -45,7 +45,9 @@ public class SecurityConfig  {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/login").permitAll();
-        //http.authorizeRequests().antMatchers("/anonce").hasAnyRole("R_VISITEUR","R_RESIDENCE","R_HOTEL","R_APPARTEMENT","R_VILLA","R_PISCINE","R_LOISIR","R_RESTO");
+        //http.authorizeRequests().antMatchers("/annonce").hasAnyRole("R_VISITEUR","R_RESIDENCE","R_HOTEL","R_APPARTEMENT","R_VILLA","R_PISCINE","R_LOISIR","R_RESTO");
+        //http.authorizeRequests().antMatchers("/commentaire").hasAnyRole("R_VISITEUR","R_RESIDENCE","R_HOTEL","R_APPARTEMENT","R_VILLA","R_PISCINE","R_LOISIR","R_RESTO");
+        //http.authorizeRequests().antMatchers("/reservation").hasAnyRole("R_VISITEUR","R_RESIDENCE","R_HOTEL","R_APPARTEMENT","R_VILLA","R_PISCINE","R_LOISIR","R_RESTO");
        
         http.authorizeRequests().antMatchers("/new-account").permitAll();
         http.authorizeRequests().antMatchers("/creer-anonce").permitAll();
@@ -57,6 +59,19 @@ public class SecurityConfig  {
         http.authorizeRequests().antMatchers("/api").permitAll();
         http.authorizeRequests().antMatchers("/commune/save").permitAll();
         http.authorizeRequests().antMatchers("/commune/listall").permitAll();
+        http.authorizeRequests().antMatchers("/user/allU").permitAll();
+        http.authorizeRequests().antMatchers("/user/allR").permitAll();
+        http.authorizeRequests().antMatchers("/user/saveR").permitAll();
+        http.authorizeRequests().antMatchers("/user/saveU").permitAll();
+        http.authorizeRequests().antMatchers("/user/saveUserAndRole").permitAll();
+        http.authorizeRequests().antMatchers("/user/suppR/{id}").permitAll();
+        http.authorizeRequests().antMatchers("/user/suppU/{id}").permitAll();
+        
+        http.authorizeRequests().antMatchers("/categorie/allC").permitAll();
+        http.authorizeRequests().antMatchers("/categorie/saveC").permitAll();
+        http.authorizeRequests().antMatchers("/categorie/updateC").permitAll();
+        http.authorizeRequests().antMatchers("/categorie/suppC/{id}").permitAll();
+        http.authorizeRequests().antMatchers("/categorie/{id}").permitAll();
         
         //http.authorizeRequests().antMatchers("/all").hasAuthority("ADMIN");
         //http.authorizeRequests().antMatchers("/api/cat").hasAuthority("ADMIN");//CRUD

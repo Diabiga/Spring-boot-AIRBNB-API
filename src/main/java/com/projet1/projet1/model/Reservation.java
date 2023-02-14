@@ -24,8 +24,10 @@ public class Reservation {
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long reservation_id;
 	
+	Date dateReservation;
 	String motif;
-	Date datereservation;
+	Date dateDebutSejour;
+	Date dateFinSejour;
 	int nbpersonne; 
 	
 	@ManyToOne

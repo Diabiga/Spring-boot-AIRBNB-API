@@ -24,8 +24,7 @@ public class CategorieController {
 	CategorieService categorieServiceRP ;
 	
 	
-	@RequestMapping(method=RequestMethod.GET)
-	
+	@RequestMapping(path = "allC",method=RequestMethod.GET)
 	public List<Categorie> getAllCategories()
 	{
 	return categorieServiceRP.findAll();
@@ -38,19 +37,19 @@ public class CategorieController {
 	}
 
 	
-	@RequestMapping(value="/enregistrer",method = RequestMethod.POST)
+	@RequestMapping(value="/saveC",method = RequestMethod.POST)
 	
 	public Categorie createProduit(@RequestBody Categorie c) {
 		
 	return categorieServiceRP.saveCategorie(c);
 	}
 	
-	@RequestMapping(value="/update",method = RequestMethod.PUT)
+	@RequestMapping(value="/updateC",method = RequestMethod.PUT)
 	public Categorie updateProduit(@RequestBody Categorie c) {
 	return categorieServiceRP.updateCategorie(c);
 	}
 
-	@RequestMapping(value="/supprimer/{id}",method = RequestMethod.DELETE)
+	@RequestMapping(value="/suppC/{id}",method = RequestMethod.DELETE)
 	public void deleteProduit(@PathVariable("id") Long id)
 	{
 		try {

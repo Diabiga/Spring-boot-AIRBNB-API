@@ -48,8 +48,8 @@ public class Projet1Application {
 	 * userService.addRoleToUser("admin", "R_RESIDENCE");
 	 * userService.addRoleToUser("nadhem", "R_HOTEL");
 	 * userService.addRoleToUser("yassine", "R_APPARTEMENT"); }
+	 * 
 	 */
-	 
 	
 	@Bean
 	BCryptPasswordEncoder getBCE() {
