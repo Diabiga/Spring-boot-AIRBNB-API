@@ -41,7 +41,7 @@ public class CommentaireService implements CommentaireInt{
 
 	@Override
 	public List<Commentaire> findCommentaireByAnnonceId(Long id) {
-		return commentaireRepo.findCommentaireByAnnonceId(id);	
+		return null;// commentaireRepo.findCommentaireByAnnonceId(id);	
 	}
 
 }

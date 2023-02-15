@@ -24,11 +24,8 @@ public class ServicePropose {
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long  ServicePropose_id;
 	private String Service1;
-	private String Service2;
-	private String Service3;
-	private String Service4;
-	private String Service5;
-	private String Service6;
+	private String description;
+
 	
 	@ManyToMany(mappedBy = "servicesProposes")
     private Set<Annonce> annonces;

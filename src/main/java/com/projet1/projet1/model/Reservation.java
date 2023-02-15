@@ -29,6 +29,7 @@ public class Reservation {
 	Date dateDebutSejour;
 	Date dateFinSejour;
 	int nbpersonne; 
+	Double fraisMenange;
 	
 	@ManyToOne
     @JoinColumn(name = "user_id")

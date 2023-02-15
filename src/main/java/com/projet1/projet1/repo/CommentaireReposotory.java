@@ -11,8 +11,8 @@ import com.projet1.projet1.model.Commentaire;
 public interface CommentaireReposotory extends JpaRepository<Commentaire, Long> {
 	
 	
-	  @Query("SELECT c.commentaire, a.titre FROM Commentaire c JOIN c.annonce a WHERE a.id = :annonceId")
-	   List<Commentaire> findCommentaireByAnnonceId(@Param("annonceId") Long annonceId);
+	 // @Query("SELECT c.commentaire, a.titre FROM Commentaire c JOIN c.annonce a WHERE a.id = :annonceId")
+	//   List<Commentaire> findCommentaireByAnnonceId(@Param("annonceId") Long annonceId);
 	
 	
 

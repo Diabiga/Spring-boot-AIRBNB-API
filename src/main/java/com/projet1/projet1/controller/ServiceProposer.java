@@ -12,35 +12,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projet1.projet1.model.Annonce;
-import com.projet1.projet1.model.User;
+import com.projet1.projet1.model.ServicePropose;
 import com.projet1.projet1.service.AnnonceService;
+import com.projet1.projet1.service.ServiceproposerImpl;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/annonce")
-public class AnnonceContraller {
+@RequestMapping("/serviceP")
+public class ServiceProposer {
 	
 	@Autowired
-	AnnonceService add;
+	ServiceproposerImpl add;
 	
-	@RequestMapping(path = "allA",method = RequestMethod.GET)
-	public List<Annonce> getAllUsers() {
+	@RequestMapping(path = "allSp",method = RequestMethod.GET)
+	public List<ServicePropose> getAllSp() {
 		return add.getAll();
 	 }
-	@RequestMapping(path = "allA/{id}",method = RequestMethod.GET)
-	public Annonce getannoncebyId(@PathVariable("id") Long id) {
-		return add.finbyidAnnonce(id);
+	@RequestMapping(path = "allSp/{id}",method = RequestMethod.GET)
+	public ServicePropose getSpbyId(@PathVariable("id") Long id) {
+		return add.finbyidServicePropose(id) ;
 	}
 	
-	@RequestMapping(path = "saveA",method = RequestMethod.POST)
-	public Annonce saveUsers(@RequestBody Annonce u) {
-		return add.saveAnnonce(u);
+	@RequestMapping(path = "saveSp",method = RequestMethod.POST)
+	public ServicePropose saveSp(@RequestBody ServicePropose u) {
+		return add.saveServicePropose(u) ;
 	 }
 	
 	
 	@RequestMapping(path = "suppA",method = RequestMethod.DELETE)
-	public void suppUsers(@RequestBody Annonce u) {
-		 		add.DelateAnnonce(u);
+	public void suppUsers(@RequestBody ServicePropose u) {
+		 		add.DelateServicePropose(u);;
 		
 	 }
 	
@@ -48,10 +49,6 @@ public class AnnonceContraller {
 		public void supUser(@PathVariable("id") Long id) {
 		
 	 }
-	 
-	 @RequestMapping(value="/prodscat/{idCat}",method = RequestMethod.GET)
-		public List<Annonce> getAnnonceByCatId(@PathVariable("idCat") Long idCat) {
-			return add.findByCategorieIdCat(idCat);
-		}
+
 
 }

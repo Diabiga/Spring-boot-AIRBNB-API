@@ -31,7 +31,7 @@ public class Annonce {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long id;
-	String titre;
+	String titreAnnonce;
 	String description1;
 	String description2;
 	String description3;
@@ -41,7 +41,7 @@ public class Annonce {
 	
 	String nbPiece;
 	String contact;
-	String prix;
+	Double prixAnnonce;
 	String whatapp;
 	String note; 
 	String etoile;

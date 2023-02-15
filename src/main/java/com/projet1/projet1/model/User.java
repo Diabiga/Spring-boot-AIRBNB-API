@@ -1,6 +1,7 @@
 package com.projet1.projet1.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,6 +38,7 @@ public class User {
 	private Boolean enabled;
 	private String contact;
 	private String email;
+	private Date date;
 	@ManyToOne
 	private Reservation reservation ;
 	

@@ -17,7 +17,7 @@ import com.projet1.projet1.service.UserService;
 @RestController
 @CrossOrigin(origins = "*")
 
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 
 	
@@ -31,7 +31,7 @@ public class UserController {
 	RoleReposotory role;
 	
 	
-	@RequestMapping(path = "allU",method = RequestMethod.GET)
+	@RequestMapping(path = "all",method = RequestMethod.GET)
 	public List<User> getAllUsers() {
 		return REPO.findAll();
 	 }
