@@ -29,8 +29,15 @@ public class ImageData {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
-	    private String name;
-	    private String type;
+	    private String fileName;
+	    
+	    private String fileType;
+	    public ImageData(String fileName, String fileType,byte[] imageData){
+	    	 this.fileName=fileName;
+		    
+		    this.fileType=fileType;	
+		    this.imageData=imageData;
+	    }
 	    @Lob
 	    @Column(name = "imagedata",length = 1000)
 	    private byte[] imageData;
