@@ -15,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 
 
@@ -24,7 +27,8 @@ import lombok.NoArgsConstructor;
 
 @Data 
 
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor 
+@AllArgsConstructor
 @Entity
 public class Annonce {
 	
@@ -64,7 +68,9 @@ public class Annonce {
 	//@ManyToOne
 	//private ImageData image;
 	@OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ImageData> images;
+	
+	@JsonIgnore  
+    private Set<FileData> images;
 	
 	//region mapping
 	@ManyToOne

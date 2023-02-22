@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projet1.projet1.model.Annonce;
 import com.projet1.projet1.model.ServicePropose;
-import com.projet1.projet1.service.AnnonceService;
 import com.projet1.projet1.service.ServiceproposerImpl;
 
 @RestController

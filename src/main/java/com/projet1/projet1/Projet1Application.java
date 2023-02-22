@@ -29,6 +29,8 @@ public class Projet1Application {
 	@PostConstruct
 	
 	
+	
+	
 	/*
 	 * void init_users() {
 	 * 
@@ -39,17 +41,20 @@ public class Projet1Application {
 	 * Role(null,"R_PISCINE")); userService.addRole(new Role(null,"R_LOISIR"));
 	 * userService.addRole(new Role(null,"R_RESTO")); // ajouter les users
 	 * 
-	 * userService.saveUser(new User(null,"admin","123",true,null, null, null,
-	 * null)); userService.saveUser(new User(null,"nadhem","123",true,null, null,
-	 * null, null)); userService.saveUser(new User(null,"yassine","123",true,null,
-	 * null, null, null));
+	 * userService.saveUser(new User(null,"admin","123",true,null, null, null, null,
+	 * null, null, null)); userService.saveUser(new
+	 * User(null,"nadhem","123",true,null, null, null, null, null, null, null));
+	 * userService.saveUser(new User(null,"yassine","123",true,null, null, null,
+	 * null, null, null, null));
 	 * 
-	 * userService.addRoleToUser("admin", "R_VISITEUR");
 	 * userService.addRoleToUser("admin", "R_RESIDENCE");
-	 * userService.addRoleToUser("nadhem", "R_HOTEL");
-	 * userService.addRoleToUser("yassine", "R_APPARTEMENT"); }
-	 * 
+	 * userService.addRoleToUser("admin", "R_RESIDENCE");
+	 * userService.addRoleToUser("nadhem", "R_VILLA");
+	 * userService.addRoleToUser("yassine", "R_RESTO"); }
 	 */
+	 
+	  
+	 
 	
 	@Bean
 	BCryptPasswordEncoder getBCE() {
