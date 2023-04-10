@@ -9,8 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,7 +26,7 @@ import com.projet1.projet1.service.UserService;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 	
-	private static final Logger myLogger =  LogManager.getLogger( JWTAuthenticationFilter.class) ;
+	
 	private AuthenticationManager authenticationManager;
 
 	
@@ -46,12 +45,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			 user = new ObjectMapper().readValue(request.getInputStream(), User.class);
 		} catch (JsonParseException e) {
 			e.printStackTrace();
-			myLogger.error(e);
+		
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
-			myLogger.error(e);
+			
 		} catch (IOException e) {	
-			myLogger.error(e);
+		
 			e.printStackTrace();
 		}
 			

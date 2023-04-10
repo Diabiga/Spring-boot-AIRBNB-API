@@ -2,18 +2,20 @@ package com.projet1.projet1.service.dao;
 
 import java.util.List;
 
-import com.projet1.projet1.model.ServicePropose;
+import com.projet1.projet1.model.ServiceP;
+
+
 
 
 
 public interface ServiceProposerInterface {
 
 	
-public List<ServicePropose>getAll();
+public List<ServiceP>getAll();
 	
-	public ServicePropose saveServicePropose(ServicePropose A); 
+	public ServiceP saveServicePropose(ServiceP A); 
 	
-	public void DelateServicePropose(ServicePropose A); 
+	public void DelateServicePropose(ServiceP A); 
 	
-	public ServicePropose finbyidServicePropose(Long l);
+	public ServiceP finbyidServicePropose(Long l);
 }

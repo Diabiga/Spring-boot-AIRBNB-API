@@ -11,34 +11,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projet1.projet1.model.ServicePropose;
+import com.projet1.projet1.model.ServiceP;
 import com.projet1.projet1.service.ServiceproposerImpl;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/serviceP")
+@RequestMapping("/service")
 public class ServiceProposer {
 	
 	@Autowired
 	ServiceproposerImpl add;
 	
-	@RequestMapping(path = "allSp",method = RequestMethod.GET)
-	public List<ServicePropose> getAllSp() {
+	@RequestMapping(path = "/all",method = RequestMethod.GET)
+	public List<ServiceP> getAllSp() {
 		return add.getAll();
 	 }
-	@RequestMapping(path = "allSp/{id}",method = RequestMethod.GET)
-	public ServicePropose getSpbyId(@PathVariable("id") Long id) {
+	@RequestMapping(path = "/all/{id}",method = RequestMethod.GET)
+	public ServiceP getSpbyId(@PathVariable("id") Long id) {
 		return add.finbyidServicePropose(id) ;
-	}
+	} 
 	
-	@RequestMapping(path = "saveSp",method = RequestMethod.POST)
-	public ServicePropose saveSp(@RequestBody ServicePropose u) {
+	@RequestMapping(path = "/save",method = RequestMethod.POST)
+	public ServiceP saveSp(@RequestBody ServiceP u) {
 		return add.saveServicePropose(u) ;
 	 }
 	
 	
 	@RequestMapping(path = "suppA",method = RequestMethod.DELETE)
-	public void suppUsers(@RequestBody ServicePropose u) {
+	public void suppUsers(@RequestBody ServiceP u) {
 		 		add.DelateServicePropose(u);;
 		
 	 }

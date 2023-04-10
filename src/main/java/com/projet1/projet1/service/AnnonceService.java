@@ -2,12 +2,16 @@ package com.projet1.projet1.service;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet1.projet1.model.Annonce;
 import com.projet1.projet1.model.Categorie;
+import com.projet1.projet1.model.ServiceP;
 import com.projet1.projet1.repo.AnnonceReposotory;
+import com.projet1.projet1.repo.serviceProposerReposotory;
 import com.projet1.projet1.service.dao.AnnonceInt;
 
 @Service
@@ -15,6 +19,8 @@ public class AnnonceService implements AnnonceInt {
 
 	@Autowired
 	private  AnnonceReposotory add; 
+	@Autowired
+	private serviceProposerReposotory serviceRepository;
 	
 	
 	@Override
@@ -83,4 +89,17 @@ public class AnnonceService implements AnnonceInt {
 		return add.trierAnnonceNomsPrix();
 	}
 
+	
+	/********************************************* annonce by service **************************************************/
+	
+	public Annonce addServiceToAnnonce(Long annonceId, Long serviceId) {
+	    Annonce annonce =  add.findById(annonceId)
+	            .orElseThrow(() -> new EntityNotFoundException("Annonce not found with id: " + annonceId));
+
+	    ServiceP service = serviceRepository.findById(serviceId)
+	            .orElseThrow(() -> new EntityNotFoundException("Service not found with id: " + serviceId));
+
+	    //annonce.saveServicePropose(service);
+	    return  add.save(annonce);
+	}
 }

@@ -84,6 +84,10 @@ public class SecurityConfig  {
         http.authorizeRequests().antMatchers("/api/**").permitAll();
         http.authorizeRequests().antMatchers("/image/**").permitAll();
         http.authorizeRequests().antMatchers("/annonces/**").permitAll();
+        http.authorizeRequests().antMatchers("/service/save").permitAll();
+        http.authorizeRequests().antMatchers("/api/service/**").permitAll();
+        http.authorizeRequests().antMatchers("/service/all").permitAll();
+        http.authorizeRequests().antMatchers("/annonceA/email").permitAll();
    
         
         http.authorizeRequests().anyRequest().authenticated();

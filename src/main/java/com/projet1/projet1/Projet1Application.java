@@ -5,16 +5,23 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.projet1.projet1.model.Role;
-import com.projet1.projet1.model.User;
-import com.projet1.projet1.repo.UserRepository;
+//import com.projet1.projet1.model.Role;
+//import com.projet1.projet1.model.User;
+//import com.projet1.projet1.repo.UserRepository;
 import com.projet1.projet1.service.UserService;
 
+
 @SpringBootApplication
-public class Projet1Application {
+public class Projet1Application extends SpringBootServletInitializer {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Projet1Application.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Projet1Application.class, args);

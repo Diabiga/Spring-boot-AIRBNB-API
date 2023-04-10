@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.projet1.projet1.model.ServicePropose;
+import com.projet1.projet1.model.ServiceP;
 import com.projet1.projet1.repo.serviceProposerReposotory;
 import com.projet1.projet1.service.dao.ServiceProposerInterface;
 
@@ -17,27 +17,33 @@ public class ServiceproposerImpl  implements ServiceProposerInterface{
 	serviceProposerReposotory sp;
 	
 	@Override
-	public List<ServicePropose> getAll() {
+	public List<ServiceP> getAll() {
 		// TODO Auto-generated method stub
 		return sp.findAll();
 	}
 
-	@Override
-	public ServicePropose saveServicePropose(ServicePropose A) {
-		// TODO Auto-generated method stub
-		return sp.save(A);
-	}
+	
 
 	@Override
-	public void DelateServicePropose(ServicePropose A) {
+	public void DelateServicePropose(ServiceP A) {
 		sp.delete(A);
 		
 	}
 
 	@Override
-	public ServicePropose finbyidServicePropose(Long l) {
+	public ServiceP finbyidServicePropose(Long l) {
 		// TODO Auto-generated method stub
 		return sp.findById(l).get();
 	}
+
+	@Override
+	public ServiceP saveServicePropose(ServiceP A) {
+	
+		return sp.save(A);
+	}
+	
+//	public Service addService(Service service) {
+//	    return sp.save(service);
+//	}
 
 }

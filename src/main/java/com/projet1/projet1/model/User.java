@@ -35,8 +35,12 @@ public class User {
 	@Column(unique=true)
 	private String username;
 	private String password;
+	private String password2;
 	private Boolean enabled;
+	
+	@Column(unique=true)
 	private String contact;
+	@Column(unique=true)
 	private String email;
 	private Date date;
 	@ManyToOne

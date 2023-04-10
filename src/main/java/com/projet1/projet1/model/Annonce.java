@@ -2,6 +2,7 @@ package com.projet1.projet1.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -50,7 +51,7 @@ public class Annonce {
 	String note; 
 	String etoile;
 	Date openDate;
-	
+	Boolean statut;
 	
 	//catégorie
 	@ManyToOne
@@ -108,9 +109,14 @@ public class Annonce {
 		 /**************************************************************service by annonce ****************************/
 		 @ManyToMany(cascade = CascadeType.ALL)
 		    @JoinTable(
-		        name = "annonce_service_propose", 
-		        joinColumns = @JoinColumn(name = "annonce_id"), 
-		        inverseJoinColumns = @JoinColumn(name = "service_propose_id")
-		    )
-		    private Set<ServicePropose> servicesProposes;
+		        name = "annonce_service",
+		        joinColumns = @JoinColumn(name = "annonce_id"),
+		        inverseJoinColumns = @JoinColumn(name = "service_id"))
+		    private Set<ServiceP> services = new HashSet<>();
+//		    @JoinTable(
+//		        name = "annonce_service_propose", 
+//		        joinColumns = @JoinColumn(name = "annonce_id"), 
+//		        inverseJoinColumns = @JoinColumn(name = "service_propose_id")
+//		    )
+//		    private Set<ServicePropose> servicesProposes;
 }
