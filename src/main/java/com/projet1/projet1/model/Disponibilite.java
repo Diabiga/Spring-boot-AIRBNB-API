@@ -1,5 +1,6 @@
 package com.projet1.projet1.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-public class Disponibilite {
+public class Disponibilite implements Serializable {
 	
 	Date horaire;
 	String description;

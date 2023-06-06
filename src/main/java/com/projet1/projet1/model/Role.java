@@ -3,6 +3,8 @@ package com.projet1.projet1.model;
 
 
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor @AllArgsConstructor
 
 @Entity
-public class Role {
+public class Role  implements Serializable  {
 
 	
 	@Id

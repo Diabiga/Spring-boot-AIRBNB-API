@@ -2,6 +2,7 @@ package com.projet1.projet1.model;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,19 +24,17 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-public class Region {
+public class Region implements Serializable {
 
 	
 
-	@Id
-	@GeneratedValue (strategy=GenerationType.IDENTITY)
-	private Long region_id;
-	String nomRegion;
-	String densite;
-	
-	
-	  @OneToMany (mappedBy = "region")
-	  
-	  @JsonIgnore private List<Annonce> annonce;
+	  @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long id;
+
+	    private String nom;
+
+	    @OneToMany(mappedBy = "region")
+	    private List<Annonce> annonces;
 	 
 }

@@ -1,5 +1,7 @@
 package com.projet1.projet1.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 
@@ -36,11 +38,16 @@ public class UserService implements UserServiceInterface {
 
 	@Override
 	public User addRoleToUser(String username, String rolename) {
-		User usr = (User) userRep.findByUsername(username);
-		Role r = (Role) roleRep.findByRole(rolename);
 		
-		usr.getRoles().add(r);
-		return usr;
+		
+		  User usr = (User) userRep.findByUsername(username); Role r = (Role)
+		  roleRep.findByRole(rolename);
+		  
+		  usr.getRoles().add(r);
+		  
+		  return usr;
+		 
+
 	}
 
 	
@@ -54,4 +61,50 @@ public class UserService implements UserServiceInterface {
 		return (User) userRep.findByUsername(username);
 	}
 
+	public User createUser(User user, List<Long> roleIds) {
+        // Hash the password before saving
+		
+        String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
+
+        // Assign roles to the user
+        List<Role> roles = roleRep.findAllById(roleIds);
+        user.setRoles(roles);
+
+        return userRep.save(user);
+    }
+	
+	@Override
+	 public void activateAccount(Long userId, String password2) {
+	        User user = userRep.findById(userId).orElse(null);
+	        System.out.println("info user: "+user.getUser_id()+" \n pwd2: "+user.getPassword2()+"");
+	        System.out.println("password2 enter par le user "+password2+"");
+	        if (user != null && user.getPassword2().equals(password2)) {
+	            user.setActive(true);
+	            userRep.save(user);
+	            System.out.println("Compte activé avec succès !");
+	        } else {
+	            System.out.println("Le mot de passe ne correspond pas. Impossible d'activer le compte.");
+	        }
+	    }
+
+	@Override
+	public int supUser(Long userId) {
+		User user = userRep.findById(userId).orElse(null);
+
+	    if (user == null) {
+	    	return -1;
+	    }
+
+	    // Détacher le rôle de l'utilisateur
+	    user.setRoles(null);
+
+	    // Supprimer l'utilisateur
+	    userRep.delete(user);
+		return 0;
+	}
+
+	
+	
+	
 }

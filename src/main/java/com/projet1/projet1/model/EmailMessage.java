@@ -1,5 +1,7 @@
 package com.projet1.projet1.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 import lombok.AllArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class EmailMessage {
+public class EmailMessage implements Serializable {
 
 	
 	String to;

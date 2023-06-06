@@ -9,8 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.projet1.projet1.model.Annonce;
 import com.projet1.projet1.model.Categorie;
+import com.projet1.projet1.model.Commune;
+import com.projet1.projet1.model.Region;
 import com.projet1.projet1.model.ServiceP;
 import com.projet1.projet1.repo.AnnonceReposotory;
+import com.projet1.projet1.repo.CategorieRepo;
+import com.projet1.projet1.repo.CommuneReposotory;
+import com.projet1.projet1.repo.RegionReposotory;
 import com.projet1.projet1.repo.serviceProposerReposotory;
 import com.projet1.projet1.service.dao.AnnonceInt;
 
@@ -18,88 +23,110 @@ import com.projet1.projet1.service.dao.AnnonceInt;
 public class AnnonceService implements AnnonceInt {
 
 	@Autowired
-	private  AnnonceReposotory add; 
+	private  AnnonceReposotory annonceRepository; 
 	@Autowired
 	private serviceProposerReposotory serviceRepository;
 	
+	 private  CommuneReposotory communeRepository;
+	   private  CategorieRepo categorieAnnonceRepository;
+	    private  RegionReposotory regionRepository;
 	
 	@Override
 	public List<Annonce> getAll() {
 		
-		return add.findAll();
+		return annonceRepository.findAll();
 	}
 
+	public Annonce createAnnonce(Annonce annonce, Long idCommune, Long idCategorieAnnonce, Long idRegion) {
+        Commune commune = communeRepository.findById(idCommune)
+                .orElseThrow(() -> new EntityNotFoundException("Commune not found with id " + idCommune));
+        Categorie categorieAnnonce = categorieAnnonceRepository.findById(idCategorieAnnonce)
+                .orElseThrow(() -> new EntityNotFoundException("CategorieAnnonce not found with id " + idCategorieAnnonce));
+        Region region = regionRepository.findById(idRegion)
+                .orElseThrow(() -> new EntityNotFoundException("Region not found with id " + idRegion));
+
+        annonce.setCommune(commune);
+        annonce.setCategorie(categorieAnnonce);
+        annonce.setRegion(region);
+
+        return annonceRepository.save(annonce);
+    }
+	
 	@Override
 	public Annonce saveAnnonce(Annonce A) {
+//		Annonce annonce = new Annonce();
+//		annonce.setCategorie(A.get);
+//		annonce.setCommune(null);
+//		annonce.setRegion(null);
 		
-		return  add.save(A);
+		return  annonceRepository.save(A);
 	}
 
 	@Override
 	public void DelateAnnonce(Annonce A) {
 		
-	add.delete(A);;
+		annonceRepository.delete(A);;
 	}
 
 	@Override
 	public Annonce finbyidAnnonce(Long l) {
 		
-		return add.findById(l).get();
+		return annonceRepository.findById(l).get();
 	}
 
 	@Override
 	public List<Annonce> findByNomAnnonce(String nom) {
 		
-		return add.findByTitreAnnonce(nom);
+		return annonceRepository.findByTitreAnnonce(nom);
 	}
 
 	@Override
 	public List<Annonce> findByNomAnnonceContains(String nom) {
 		
-		return add.findByTitreAnnonceContains(nom);
+		return annonceRepository.findByTitreAnnonceContains(nom);
 	}
 
 	@Override
 	public List<Annonce> findByNomPrix(String nom, Double prix) {
 		
-		return add.findByNomPrix(nom, prix);
+		return annonceRepository.findByNomPrix(nom, prix);
 	}
 
 	@Override
 	public List<Annonce> findByCategorie(Categorie categorie) {
 	
-		return add.findByCategorie(categorie);
+		return annonceRepository.findByCategorie(categorie);
 	}
 
 	@Override
 	public List<Annonce> findByCategorieIdCat(Long id) {
 		
-		return add.findByCategorieIdCat(id);
+		return null;
 	}
 
 	@Override
 	public List<Annonce> findByOrderByNomProduitAsc() {
 		
-		return add.findByOrderByTitreAnnonceAsc();
+		return annonceRepository.findByOrderByTitreAnnonceAsc();
 	}
 
 	@Override
 	public List<Annonce> trierAnnonceNomsPrix() {
 		
-		return add.trierAnnonceNomsPrix();
+		return annonceRepository.trierAnnonceNomsPrix();
 	}
 
 	
 	/********************************************* annonce by service **************************************************/
 	
 	public Annonce addServiceToAnnonce(Long annonceId, Long serviceId) {
-	    Annonce annonce =  add.findById(annonceId)
+	    Annonce annonce =  annonceRepository.findById(annonceId)
 	            .orElseThrow(() -> new EntityNotFoundException("Annonce not found with id: " + annonceId));
 
 	    ServiceP service = serviceRepository.findById(serviceId)
 	            .orElseThrow(() -> new EntityNotFoundException("Service not found with id: " + serviceId));
 
 	    //annonce.saveServicePropose(service);
-	    return  add.save(annonce);
+	    return  annonceRepository.save(annonce);
 	}
 }

@@ -1,6 +1,7 @@
 package com.projet1.projet1.model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-public class Ordre {
+public class Ordre implements Serializable  {
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long ordre_id;

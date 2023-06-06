@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.projet1.projet1.model.Annonce;
 
 import com.projet1.projet1.service.AnnonceService;
-import com.projet1.projet1.service.StorageService;
+
 
 @RestController
 @CrossOrigin("*")
@@ -35,8 +35,15 @@ public class AnnonceContraller {
 	AnnonceService add;
 	
 	@Autowired
-	StorageService  storageService;
+	//StorageService  storageService;
 	
+	
+	/*@RequestMapping(path = "save",method = RequestMethod.POST)
+	public ResponseEntity<Annonce> createAnnonce(@RequestBody Annonce annonce, @RequestParam(name = "commune") Long idCommune, @RequestParam(name = "categorie") Long idCategorie, @RequestParam(name = "region") Long idRegion) {
+	  
+	        Annonce createdAnnonce = add.createAnnonce(annonce, idCommune, idCategorie, idRegion);
+	        return ResponseEntity.ok(createdAnnonce);
+	    }*/
 	@RequestMapping(path = "allA",method = RequestMethod.GET)
 	public List<Annonce> getAllUsers() {
 		return add.getAll();
@@ -69,37 +76,35 @@ public class AnnonceContraller {
 		}
 
 	 /********************************image by annonce*******************************************************/
-	 @PostMapping("/annonces/{annonceId}/images")
-	 public ResponseEntity<List<String>> uploadMultipleImages(@PathVariable Long annonceId,
-	                                            @RequestParam("images") List<MultipartFile> files) {
-	     try {
-	         List<String> fileNames = storageService.uploadImages(annonceId, files);
-
-	         if (fileNames.isEmpty()) {
-	             return ResponseEntity.badRequest().build();
-	         }
-
-	         return ResponseEntity.ok().body(fileNames);
-	     } catch (IOException e) {
-	         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-	     }
-	 }
+		
+		/*
+		 * @PostMapping("/annonces/{annonceId}/images") public
+		 * ResponseEntity<List<String>> uploadMultipleImages(@PathVariable Long
+		 * annonceId,
+		 * 
+		 * @RequestParam("images") List<MultipartFile> files) { try { List<String>
+		 * fileNames = storageService.uploadImages(annonceId, files);
+		 * 
+		 * if (fileNames.isEmpty()) { return ResponseEntity.badRequest().build(); }
+		 * 
+		 * return ResponseEntity.ok().body(fileNames); } catch (IOException e) { return
+		 * ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); } }
+		 */
+		 
 	 
 	/******************************************************récupérer les images correspondant à une annonce
 	 * @throws IOException *********************************************************************************/
 
 	 
 	 
-	 @GetMapping("/annonces/{annonceId}/images")
-	 public ResponseEntity<List<byte[]>> getAnnonceImages(@PathVariable Long annonceId) throws IOException {
-	     List<byte[]> images = storageService.getAnnonceImages(annonceId);
-	     if (images.isEmpty()) {
-	         return ResponseEntity.notFound().build();
-	     } else {
-	         HttpHeaders headers = new HttpHeaders();
-	         headers.setContentType(MediaType.IMAGE_JPEG);
-	         return new ResponseEntity<>(images, headers, HttpStatus.OK);
-	     }
-	 }
+	/*
+	 * @GetMapping("/annonces/{annonceId}/images") public
+	 * ResponseEntity<List<byte[]>> getAnnonceImages(@PathVariable Long annonceId)
+	 * throws IOException { List<byte[]> images =
+	 * storageService.getAnnonceImages(annonceId); if (images.isEmpty()) { return
+	 * ResponseEntity.notFound().build(); } else { HttpHeaders headers = new
+	 * HttpHeaders(); headers.setContentType(MediaType.IMAGE_JPEG); return new
+	 * ResponseEntity<>(images, headers, HttpStatus.OK); } }
+	 */
 
 }

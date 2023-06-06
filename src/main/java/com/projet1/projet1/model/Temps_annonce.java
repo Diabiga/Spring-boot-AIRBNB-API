@@ -1,5 +1,6 @@
 package com.projet1.projet1.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Temps_annonce {
+public class Temps_annonce implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)

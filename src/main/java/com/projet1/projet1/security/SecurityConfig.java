@@ -57,9 +57,12 @@ public class SecurityConfig  {
        http.authorizeRequests().antMatchers("/api").permitAll();
         http.authorizeRequests().antMatchers("/commune/save").permitAll();
        http.authorizeRequests().antMatchers("/commune/listall").permitAll();
-       http.authorizeRequests().antMatchers("/user/all").permitAll();
+       http.authorizeRequests().antMatchers("/user/allU").permitAll();
+       http.authorizeRequests().antMatchers("/user").permitAll();
+       http.authorizeRequests().antMatchers("/user/**").permitAll();
        http.authorizeRequests().antMatchers("/user/allR").permitAll();
        http.authorizeRequests().antMatchers("/user/saveR").permitAll();
+       http.authorizeRequests().antMatchers("/user/save").permitAll();
         http.authorizeRequests().antMatchers("/user/saveU").permitAll();
        http.authorizeRequests().antMatchers("/user/saveUserAndRole").permitAll();
         http.authorizeRequests().antMatchers("/user/suppR/{id}").permitAll();
@@ -82,6 +85,7 @@ public class SecurityConfig  {
         http.authorizeRequests().antMatchers("/api/cat").hasAuthority("ADMIN");//CRUD
         
         http.authorizeRequests().antMatchers("/api/**").permitAll();
+        http.authorizeRequests().antMatchers("/commune/**").permitAll();
         http.authorizeRequests().antMatchers("/image/**").permitAll();
         http.authorizeRequests().antMatchers("/annonces/**").permitAll();
         http.authorizeRequests().antMatchers("/service/save").permitAll();

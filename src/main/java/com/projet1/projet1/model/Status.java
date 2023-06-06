@@ -1,5 +1,6 @@
 package com.projet1.projet1.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-public class Status {
+public class Status implements Serializable {
 
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)

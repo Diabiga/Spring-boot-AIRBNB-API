@@ -15,9 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.projet1.projet1.exception.FileNotFoundException;
 import com.projet1.projet1.exception.FileStorageException;
 import com.projet1.projet1.model.Annonce;
-//import com.projet1.projet1.model.ImageData2;
-import com.projet1.projet1.repo.DatabaseFileRepository;
-import com.projet1.projet1.repo.AnnonceReposotory;
+
 
 @Service
 public class DatabaseFileService {

@@ -10,4 +10,6 @@ public interface UserServiceInterface {
 	User findUserByUsername (String username);
 	Role addRole(Role role);
 	User addRoleToUser(String username, String rolename);
+	public void activateAccount(Long userId, String password2);
+	public int supUser(Long userId);
 }

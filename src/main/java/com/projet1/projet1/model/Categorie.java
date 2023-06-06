@@ -1,5 +1,6 @@
 package com.projet1.projet1.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,19 +19,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Categorie {
+public class Categorie implements Serializable {
 
-	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long idCat;
+	  @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long id;
 
-	private String nomCat;
-	private String descriptionCat;
+	    private String description;
 
-
-	@OneToMany (mappedBy = "categorie")
-	
-	@JsonIgnore
-	private List<Annonce> Annonce;
+	    @OneToMany(mappedBy = "categorie")
+	    private List<Annonce> annonces;
 	
 }

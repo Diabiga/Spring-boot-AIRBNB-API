@@ -1,5 +1,7 @@
 package com.projet1.projet1.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="Config")
-public class Confing {
+public class Config  implements Serializable {
 
 	
 	@Id

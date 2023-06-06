@@ -1,5 +1,6 @@
 package com.projet1.projet1.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -16,6 +17,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,6 +27,7 @@ import javax.persistence.JoinColumn;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,19 +36,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor 
 @AllArgsConstructor
 @Entity
-public class Annonce {
+@Component
+public class Annonce implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long idAnnonce;
 	String titreAnnonce;
 	String description1;
-	String description2;
-	String description3;
-	String description4;
-	String resumer;
+	String presentation;
+	String historique;
 	String dimension;
-	
+	private String imagePath;
 	String nbPiece;
 	String contact;
 	Double prixAnnonce;
@@ -53,61 +57,74 @@ public class Annonce {
 	Date openDate;
 	Boolean statut;
 	
-	//catégorie
-	@ManyToOne
-	private Categorie categorie;
+	
 	
 	
 	
 	//temps annonce mapping
-	@ManyToOne
+	@OneToOne
 	private Temps_annonce temps;
 	
 	
 	
 	//image mapping
 	//@ManyToOne
-	//private ImageData image;
-	@OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	
-	@JsonIgnore  
-    private Set<FileData> images;
+	//private ImageData image;
+	@OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL)
+	 private List<Image> images;
+	//@JsonIgnore  
+   // private Set<FileData> images;
+	
+//	@OneToOne
+//	private Image image;
+	
+	// @OneToMany (mappedBy = "annonce")
+	
 	
 	//region mapping
-	@ManyToOne
-	private Region region;
+	//@ManyToOne
 	
 	
 	
-	//commune mapping
-	@ManyToOne
-	private Commune commune;
+    @ManyToOne
+    private Commune commune;
+
+    @ManyToOne
+    private Categorie categorie;
+
+    @ManyToOne
+    private Region region;
 	
 	//status mapping
-	@ManyToOne
+	//@ManyToOne
+	@OneToOne
 	private Status status;
 	
 	//status mapping 
-	@ManyToOne
+	//@ManyToOne
+	@OneToOne
 	private Disponibilite disponibilite;
 	
 	//status mapping 
-		@ManyToOne
+		//@ManyToOne
+	@OneToOne
 		private Ordre ordre;
 		
 		//personne 
-		@ManyToOne
+		//@ManyToOne
+		@OneToOne
 		private User user;
 		/***********************************************anonce et reservation*****************************************/
 		
-		@OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL)
+		@OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL )
 	    private List<Reservation> reservations = new ArrayList<>();
 		/***********************************************fin*****************************************/
 		/**********************************************************commentaire*********************************************/
 		 @OneToMany(mappedBy = "annonce")
 		  private List<Commentaire> commentaires;
 		 /**************************************************************service by annonce ****************************/
-		 @ManyToMany(cascade = CascadeType.ALL)
+		 @ManyToMany(cascade = CascadeType.ALL )
 		    @JoinTable(
 		        name = "annonce_service",
 		        joinColumns = @JoinColumn(name = "annonce_id"),

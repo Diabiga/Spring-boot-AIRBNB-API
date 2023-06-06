@@ -27,7 +27,7 @@ public interface AnnonceReposotory extends JpaRepository<Annonce, Long> {
 
 	
 	
-	List<Annonce> findByCategorieIdCat(Long id);
+	//List<Annonce> findByCategorieIdCat(Long id);
 	
 	List<Annonce> findByOrderByTitreAnnonceAsc();
 	

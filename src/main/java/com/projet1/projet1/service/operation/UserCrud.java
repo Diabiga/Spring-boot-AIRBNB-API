@@ -80,7 +80,7 @@ public class UserCrud {
 			myLogger.info("email: "+req.getEmail());
 			user1.setContact(req.getContact());
 			myLogger.info("contact: "+req.getContact());
-			user1.setEnabled(req.getEnabled());
+			//user1.setEnabled(req.getEnabled());
 			myLogger.info("Enable: "+req.getEnabled());
 			//user.setDate(mob.getDate());
 			myLogger.info("date: "+mob.getDate());

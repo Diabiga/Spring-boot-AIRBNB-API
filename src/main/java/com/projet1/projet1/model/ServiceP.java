@@ -2,6 +2,7 @@ package com.projet1.projet1.model;
 
 
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "services")
-public class ServiceP {
+public class ServiceP implements Serializable {
 	
 	  @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
