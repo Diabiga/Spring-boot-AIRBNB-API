@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image  implements Serializable {
+public class Image  implements Serializable   {
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private Long idImage ;

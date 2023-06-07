@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-public class Reservation  implements Serializable  {
+public class Reservation  implements Serializable    {
 
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)

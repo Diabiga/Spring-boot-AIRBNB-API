@@ -37,7 +37,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Component
-public class Annonce implements Serializable {
+public class Annonce implements Serializable  {
 	
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
@@ -61,59 +61,39 @@ public class Annonce implements Serializable {
 	
 	
 	
-	//temps annonce mapping
-	@OneToOne
-	private Temps_annonce temps;
 	
 	
 	
-	//image mapping
-	//@ManyToOne
 	
-	//private ImageData image;
+	
 	@OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL)
 	 private List<Image> images;
-	//@JsonIgnore  
-   // private Set<FileData> images;
-	
-//	@OneToOne
-//	private Image image;
-	
-	// @OneToMany (mappedBy = "annonce")
-	
-	
-	//region mapping
-	//@ManyToOne
-	
-	
-	
-    @ManyToOne
-    private Commune commune;
 
+	
+	
+		/*
+		 * @OneToOne private Commune commune;
+		 */
+	 @ManyToOne
+	 @JoinColumn(name = "commune_id")
+	 private Commune commune;
+	
     @ManyToOne
     private Categorie categorie;
 
-    @ManyToOne
-    private Region region;
+  
 	
-	//status mapping
-	//@ManyToOne
-	@OneToOne
-	private Status status;
 	
-	//status mapping 
-	//@ManyToOne
-	@OneToOne
-	private Disponibilite disponibilite;
+
 	
-	//status mapping 
-		//@ManyToOne
-	@OneToOne
-		private Ordre ordre;
+
+	
+	
+	
+	
 		
-		//personne 
-		//@ManyToOne
-		@OneToOne
+		
+		@OneToOne(fetch = FetchType.LAZY)
 		private User user;
 		/***********************************************anonce et reservation*****************************************/
 		
@@ -124,16 +104,6 @@ public class Annonce implements Serializable {
 		 @OneToMany(mappedBy = "annonce")
 		  private List<Commentaire> commentaires;
 		 /**************************************************************service by annonce ****************************/
-		 @ManyToMany(cascade = CascadeType.ALL )
-		    @JoinTable(
-		        name = "annonce_service",
-		        joinColumns = @JoinColumn(name = "annonce_id"),
-		        inverseJoinColumns = @JoinColumn(name = "service_id"))
-		    private Set<ServiceP> services = new HashSet<>();
-//		    @JoinTable(
-//		        name = "annonce_service_propose", 
-//		        joinColumns = @JoinColumn(name = "annonce_id"), 
-//		        inverseJoinColumns = @JoinColumn(name = "service_propose_id")
-//		    )
-//		    private Set<ServicePropose> servicesProposes;
+		
+
 }

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Categorie implements Serializable {
+public class Categorie implements Serializable  {
 
 	  @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)

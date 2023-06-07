@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 @Entity
-public class Commentaire implements Serializable {
+public class Commentaire implements Serializable   {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)

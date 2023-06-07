@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.projet1.projet1.model.Role;
@@ -18,6 +19,7 @@ import com.projet1.projet1.service.UserService;
 
 
 @SpringBootApplication
+@ComponentScan("com.projet1.projet1")
 public class Projet1Application extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

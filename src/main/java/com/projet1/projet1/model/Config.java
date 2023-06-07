@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="Config")
-public class Config  implements Serializable {
+public class Config  implements Serializable   {
 
 	
 	@Id

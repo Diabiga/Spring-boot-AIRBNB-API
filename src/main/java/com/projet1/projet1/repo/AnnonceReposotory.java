@@ -8,13 +8,14 @@ import org.springframework.data.repository.query.Param;
 
 import com.projet1.projet1.model.Annonce;
 import com.projet1.projet1.model.Categorie;
+import com.projet1.projet1.model.User;
 
 public interface AnnonceReposotory extends JpaRepository<Annonce, Long> {
 
 	@Query("select p from Annonce p where p.categorie = ?1")
 	List<Annonce> findByCategorie (Categorie categorie);
 	
-	
+	List<Annonce> findByUser(User user);
 	List<Annonce> findByTitreAnnonce(String nom);
 	
 	List<Annonce> findByTitreAnnonceContains(String nom);

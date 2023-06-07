@@ -22,14 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.projet1.projet1.model.Annonce;
-
+import com.projet1.projet1.model.AnnonceRequest;
 import com.projet1.projet1.service.AnnonceService;
+
+import DTO.ErrorEntity;
 
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/annonce")
-public class AnnonceContraller {
+public class AnnonceController {
 	
 	@Autowired
 	AnnonceService add;
@@ -44,37 +46,69 @@ public class AnnonceContraller {
 	        Annonce createdAnnonce = add.createAnnonce(annonce, idCommune, idCategorie, idRegion);
 	        return ResponseEntity.ok(createdAnnonce);
 	    }*/
-	@RequestMapping(path = "allA",method = RequestMethod.GET)
-	public List<Annonce> getAllUsers() {
-		return add.getAll();
-	 }
-	@RequestMapping(path = "allA/{id}",method = RequestMethod.GET)
-	public Annonce getannoncebyId(@PathVariable("id") Long id) {
-		return add.finbyidAnnonce(id);
-	}
 	
-	@RequestMapping(path = "saveA",method = RequestMethod.POST)
-	public Annonce saveUsers(@RequestBody Annonce u) {
-		return add.saveAnnonce(u);
-	 }
-	
-	
-	@RequestMapping(path = "suppA",method = RequestMethod.DELETE)
-	public void suppUsers(@RequestBody Annonce u) {
-		 		add.DelateAnnonce(u);
+	  @RequestMapping(path = "allA",method = RequestMethod.GET) public
+	  List<Annonce> getAllUsers() { 
 		
-	 }
-	
-	 @DeleteMapping("/suppU/{id}")
-		public void supUser(@PathVariable("id") Long id) {
-		
-	 }
+		return add.getAllAnnonces(); }
+	  
+	/*
+	 * @RequestMapping(path = "allA/{id}",method = RequestMethod.GET) public Annonce
+	 * getannoncebyId(@PathVariable("id") Long id) { return add.finbyidAnnonce(id);
+	 * }
+	 */
 	 
-	 @RequestMapping(value="/prodscat/{idCat}",method = RequestMethod.GET)
-		public List<Annonce> getAnnonceByCatId(@PathVariable("idCat") Long idCat) {
-			return add.findByCategorieIdCat(idCat);
+	@RequestMapping(path = "saveA",method = RequestMethod.POST)
+	public Object saveUsers(@RequestBody AnnonceRequest A) {
+		
+	
+		Annonce annonce = new Annonce();
+		annonce.setTitreAnnonce(A.getTitreAnnonce());
+		annonce.setContact(A.getContact());
+		annonce.setEtoile(A.getEtoile());
+		annonce.setDescription1(A.getDescription1());
+		annonce.setNbPiece(A.getNbPiece());
+		annonce.setPresentation(A.getPresentation());
+		annonce.setPrixAnnonce(A.getPrixAnnonce());
+		annonce.setWhatapp(A.getWhatapp());
+		
+		Long userID=Long.valueOf(A.getNumUser());
+		Long userCommune=Long.valueOf(A.getNumCommune());
+		
+		
+		System.out.println(annonce.getTitreAnnonce()+"  les entrer depuis postman "+A.getNumUser());
+		int test= add.createAnnonce(annonce, userID,userCommune);
+		if(test<0) {
+			return new ResponseEntity<>(new ErrorEntity("200", 1, "Error"),HttpStatus.BAD_REQUEST);
+		}if(test>=0) {
+			return new ResponseEntity<>(new ErrorEntity("200", 0, "success"),HttpStatus.CREATED);
 		}
+		return new ResponseEntity<>(new ErrorEntity("200", 1, "je sais pas"),HttpStatus.BAD_REQUEST);
+		
+	
+	
+		
+	    // return new ResponseEntity<>(new ErrorEntity("200", 1, msg),HttpStatus.BAD_REQUEST);
+	
 
+	 }
+	
+	
+		/*
+		 * @RequestMapping(path = "suppA",method = RequestMethod.DELETE) public void
+		 * suppUsers(@RequestBody Annonce u) { add.DelateAnnonce(u);
+		 * 
+		 * }
+		 * 
+		 * @DeleteMapping("/suppU/{id}") public void supUser(@PathVariable("id") Long
+		 * id) {
+		 * 
+		 * }
+		 * 
+		 * @RequestMapping(value="/prodscat/{idCat}",method = RequestMethod.GET) public
+		 * List<Annonce> getAnnonceByCatId(@PathVariable("idCat") Long idCat) { return
+		 * add.findByCategorieIdCat(idCat); }
+		 */
 	 /********************************image by annonce*******************************************************/
 		
 		/*
